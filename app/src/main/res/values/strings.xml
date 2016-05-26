@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Traveler</string>
     <string name="facebook_app_id">567543916759028</string>
+
+    <string name="login_usr">Usuario</string>
+    <string name="login_pass">password</string>
+    <string name="login_name">Nombre</string>
+    <string name="login_email">Correo</string>
+    <string name="reg_btn">Registrar</string>
+    <string name="http_error_404">Recurso no encontrado</string>
+    <string name="http_error_server">Error en el Servidor</string>
+    <string name="http_error_internet">Sin Conexion a internet</string>
+    <string name="http_error_timeout">El servidor no responde</string>
+    <string name="login_error">Usuario o password incorrecto</string>
+    <string name="reg_error">El usuario ya existe</string>
+    <string name="reg_success">Registro Exitoso</string>
 </resources>
