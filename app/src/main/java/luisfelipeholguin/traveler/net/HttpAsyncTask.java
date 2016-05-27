@@ -60,6 +60,7 @@ public class HttpAsyncTask extends AsyncTask<String, Void, Response> {
             }catch (SocketTimeoutException e){
                 response = new Response(HttpError.TIMEOUT);
             }catch(IOException e){
+
                 response = new Response(HttpError.SERVER);
             }
         }else{
