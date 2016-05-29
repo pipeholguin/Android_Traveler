@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Tab "+position;
+        List<String> titles = new ArrayList<>();
+        titles.add("Viajes");
+        titles.add("Publicar");
+        titles.add("Tus Reservas");
+        titles.add("Tu perfil");
+        return titles.get(position);
     }
 }

@@ -33,7 +33,7 @@ public class PublicarFragment extends Fragment {
     }
 
     public void setList(){
-        String list = "hola";
+        String list = "Publicar";
         binding.setList(list);
     }
 

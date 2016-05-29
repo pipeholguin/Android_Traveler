@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luisfelipeholguin.traveler.adapters.PagerAdapter;
+import luisfelipeholguin.traveler.fragments.PerfilFragment;
 import luisfelipeholguin.traveler.fragments.PublicarFragment;
+import luisfelipeholguin.traveler.fragments.ReservasFragment;
 import luisfelipeholguin.traveler.fragments.ViajesFragment;
 
 
@@ -43,11 +45,13 @@ public class MainActivity extends AppCompatActivity  {
 
         ViajesFragment viajes = new ViajesFragment();
         PublicarFragment publicar = new PublicarFragment();
-        ViajesFragment viajes2 = new ViajesFragment();
+        ReservasFragment reservas = new ReservasFragment();
+        PerfilFragment perfil = new PerfilFragment();
 
         data.add(viajes);
         data.add(publicar);
-        data.add(viajes2);
+        data.add(reservas);
+        data.add(perfil);
 
         adapter = new PagerAdapter(getSupportFragmentManager(),data);
         pager.setAdapter(adapter);
