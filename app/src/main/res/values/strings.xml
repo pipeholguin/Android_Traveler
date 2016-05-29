@@ -14,4 +14,7 @@
     <string name="login_error">Usuario o password incorrecto</string>
     <string name="reg_error">El usuario ya existe</string>
     <string name="reg_success">Registro Exitoso</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
