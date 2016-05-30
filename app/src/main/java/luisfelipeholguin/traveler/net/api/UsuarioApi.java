@@ -38,11 +38,12 @@ public class UsuarioApi extends HttpApi {
 
         HttpAsyncTask task = makeTask(REQUEST_LOGIN, HttpAsyncTask.METHOD_POST);
         task.execute(url, json.toString());
-        Log.d("TASK EXEC","URL:"+url+"JSON:"+json.toString());
+        Log.d("TASK EXEC","URL:"+url+" JSON:"+json.toString());
     }
 
     private void processLogin(Response response){
         Log.d("RPTAmsg",""+response.getMsg());
+        Log.d("VALIDATERPTA: ",""+validateError(response));
         if (validateError(response)){
             Login login = gson.fromJson(response.getMsg(), Login.class);
             onLogin.onLogin(login.getStatus(), login.getUsuario());

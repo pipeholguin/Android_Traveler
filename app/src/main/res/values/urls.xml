@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <string name="url_base">http://10.0.2.2/traveler/public/index.php</string>
+    <!--<string name="url_base">http://10.0.2.2/traveler/public/index.php</string>-->
+    <string name="url_base">http://unicauca.esy.es/traveler/public/index.php</string>
     <string name="url_login">/usuario/login</string>
+    <string name="url_registro">/usuario</string>
 </resources>

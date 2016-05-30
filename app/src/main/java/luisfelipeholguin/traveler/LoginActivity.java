@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -52,11 +53,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onLogin(String status, Usuario usuario) {
-        if (status=="OK"){
+        Log.d("STATUS: ",""+status);
+        if (status.equals("OK")){
             SharedPreferences.Editor editor= preferences.edit();
             editor.putBoolean("logged", true);
             editor.commit();
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }else {

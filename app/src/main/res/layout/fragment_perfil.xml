@@ -1,12 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="luisfelipeholguin.traveler.fragments.PerfilFragment">
-
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Perfil" />
+        tools:context="luisfelipeholguin.traveler.fragments.PerfilFragment">
 
-</FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesion"
+            app:setOnClickListener="@{onClick}"/>
+
+    </FrameLayout>
+</layout>

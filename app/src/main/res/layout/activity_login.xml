@@ -38,7 +38,5 @@
             app:setOnClickListener="@{onClick}"
             />
     </TableRow>
-
-
 </TableLayout>
 </layout>
