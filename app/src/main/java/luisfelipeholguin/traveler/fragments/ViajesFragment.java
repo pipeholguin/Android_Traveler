@@ -54,34 +54,19 @@ public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
         api.getViajes(this);
 
 
-
-
-
         return binding.getRoot();
 
 
     }
 
-    public void setList(){
 
-        Viaje v1 = new Viaje();
-        v1.setDestino("Cali");
-
-        Viaje v2 = new Viaje();
-        v2.setDestino("Bogota");
-
-        L.data.add(v1);
-        L.data.add(v2);
-
-        adapter.notifyDataSetChanged();
-    }
 
     @Override
     public void onViajes(List<Viaje> data) {
 
         for (Viaje v: data){
 
-            data.add(v);
+           L.data.add(v);
         }
 
         adapter.notifyDataSetChanged();

@@ -24,19 +24,39 @@
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="#333333"/>
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#444444"
+                    android:scaleType="centerCrop"/>
+
 
                 <TextView
                     android:id="@+id/destino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/img"
-                    android:padding="@dimen/small"
                     android:textColor="#ffffff"
                     android:text="@{viaje.destino}"
                     tools:text="Destino"/>
+
+                <TextView
+                    android:id="@+id/carro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/img"
+                    android:text="@{viaje.carro}"
+                    tools:text="Carro"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/precio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_toRightOf="@+id/img"
+                    android:text="@{viaje.precio}"
+                    tools:text="Precio"
+                    android:layout_marginTop="50dp"/>
 
 
             </RelativeLayout>
