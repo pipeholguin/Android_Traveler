@@ -43,8 +43,6 @@ public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
         binding = FragmentViajesBinding.inflate(getLayoutInflater(savedInstanceState));
         manager = new LinearLayoutManager(getActivity());
 
-
-
         L.data = new ArrayList<>();
         adapter = new ViajeAdapter(getContext(), L.data);
         binding.recycler.setAdapter(adapter);
@@ -53,22 +51,14 @@ public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
         ViajesApi api = new ViajesApi(getActivity());
         api.getViajes(this);
 
-
         return binding.getRoot();
-
-
     }
-
-
 
     @Override
     public void onViajes(List<Viaje> data) {
-
         for (Viaje v: data){
-
            L.data.add(v);
         }
-
         adapter.notifyDataSetChanged();
     }
 }

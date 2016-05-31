@@ -7,9 +7,17 @@ import java.util.Date;
  */
 public class Viaje {
 
-    String origen, destino, carro, imagen, precio;
+    String origen, destino, carro, imagen, precio, status;
     int  asientos, contacto;
     Date fecha;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getOrigen() {
         return origen;

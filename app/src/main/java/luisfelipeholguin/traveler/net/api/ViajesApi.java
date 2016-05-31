@@ -1,10 +1,13 @@
 package luisfelipeholguin.traveler.net.api;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Calendar;
 import java.util.List;
 
 import luisfelipeholguin.traveler.R;
@@ -18,13 +21,19 @@ import luisfelipeholguin.traveler.net.Response;
  */
 public class ViajesApi extends HttpApi {
 
-    static final int REQUEST_VIAJES= 1;
+    static final int REQUEST_VIAJES=0;
+    static final int REQUEST_PUBLICAR=1;
 
     public interface OnViajes{
         void  onViajes(List<Viaje> data);
     }
 
+    public interface OnPublish{
+        void onPublish(String status);
+    }
+
     OnViajes onViajes;
+    OnPublish onPublish;
 
     public ViajesApi(Context context) {
         super(context);
@@ -46,6 +55,38 @@ public class ViajesApi extends HttpApi {
         }
     }
 
+    public void publicar(String origen, String destino, int precio,
+                              int asientos, String fecha, String carro, String imagen,
+                              int contacto, OnPublish onPublish){
+        this.onPublish= onPublish;
+        String url = urlBase+context.getString(R.string.url_viajes);
+        JsonObject json = new JsonObject();
+        json.addProperty("origen", origen);
+        json.addProperty("destino", destino);
+        json.addProperty("precio", precio);
+        json.addProperty("asientos", asientos);
+        //json.addProperty("hora", fecha.get(Calendar.HOUR_OF_DAY)+":"+fecha.get(Calendar.MINUTE));
+        //json.addProperty("fecha", fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH));
+        json.addProperty("hora", "5:00");
+        json.addProperty("fecha", "31-12-2016");
+        json.addProperty("carro", carro);
+        json.addProperty("imagen", imagen);
+        json.addProperty("contacto", contacto);
+
+        HttpAsyncTask task = makeTask(REQUEST_PUBLICAR, HttpAsyncTask.METHOD_POST);
+        task.execute(url, json.toString());
+        Log.d("TASK EXEC","URL:"+url+" JSON:"+json.toString());
+    }
+
+    private void processPublicar(Response response){
+        Log.d("RPTAmsg",""+response.getMsg());
+        Log.d("VALIDATERPTA: ",""+validateError(response));
+        if (validateError(response)){
+            Viaje viaje = gson.fromJson(response.getMsg(), Viaje.class);
+            onPublish.onPublish(viaje.getStatus());
+        }
+    }
+
     @Override
     public void onResponse(int request, Response response) {
 
@@ -53,7 +94,9 @@ public class ViajesApi extends HttpApi {
             case REQUEST_VIAJES:
                 processViajes(response);
                 break;
-
+            case REQUEST_PUBLICAR:
+                processPublicar(response);
+                break;
         }
 
     }
