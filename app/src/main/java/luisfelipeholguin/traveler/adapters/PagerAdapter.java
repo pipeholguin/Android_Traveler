@@ -32,10 +32,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         List<String> titles = new ArrayList<>();
-        titles.add("Viajes");
-        titles.add("Publicar");
-        titles.add("Tus Reservas");
-        titles.add("Tu perfil");
+        titles.add("");
+        titles.add("");
+        titles.add("");
+        titles.add("");
         return titles.get(position);
     }
 }

@@ -14,14 +14,21 @@ import luisfelipeholguin.traveler.models.Viaje;
 /**
  * Created by luisfelipeholguin on 30/05/16.
  */
-public class ViajeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ViajeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+
+    public interface OnItemClickAdpapter{
+        void onClick(View v);
+    }
+
 
     Context context;
     List<Viaje> data;
+    OnItemClickAdpapter onItemClickAdpapter;
 
-    public ViajeAdapter(Context context, List<Viaje> data) {
+    public ViajeAdapter(Context context, List<Viaje> data, OnItemClickAdpapter onItemClickAdpapter) {
         this.context = context;
         this.data = data;
+        this.onItemClickAdpapter = onItemClickAdpapter;
     }
 
     @Override
@@ -39,12 +46,19 @@ public class ViajeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Viaje v = (Viaje) data.get(position);
         ViajeViewHolder h = (ViajeViewHolder) holder;
         ((ViajeViewHolder) holder).binding.setViaje(v);
+        h.binding.getRoot().setOnClickListener(this);
 
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        onItemClickAdpapter.onClick(v);
     }
 
     static class ViajeViewHolder extends RecyclerView.ViewHolder{

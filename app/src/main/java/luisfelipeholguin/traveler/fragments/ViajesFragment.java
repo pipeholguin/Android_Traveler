@@ -24,11 +24,22 @@ import luisfelipeholguin.traveler.util.L;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
+public class ViajesFragment extends Fragment implements ViajesApi.OnViajes, ViajeAdapter.OnItemClickAdpapter {
+
+    public interface OnHomeItemClick{
+        void  onHomeClick(int pos);
+    }
 
     FragmentViajesBinding binding;
     ViajeAdapter adapter;
     LinearLayoutManager manager;
+    OnHomeItemClick onHomeItemClick;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        onHomeItemClick= (OnHomeItemClick) context;
+    }
 
 
     public ViajesFragment() {
@@ -44,7 +55,7 @@ public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
         manager = new LinearLayoutManager(getActivity());
 
         L.data = new ArrayList<>();
-        adapter = new ViajeAdapter(getContext(), L.data);
+        adapter = new ViajeAdapter(getContext(), L.data, this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(manager);
 
@@ -60,5 +71,13 @@ public class ViajesFragment extends Fragment implements ViajesApi.OnViajes {
            L.data.add(v);
         }
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        int pos = binding.recycler.getChildAdapterPosition(v);
+        onHomeItemClick.onHomeClick(pos);
+
     }
 }

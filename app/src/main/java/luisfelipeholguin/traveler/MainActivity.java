@@ -2,6 +2,7 @@ package luisfelipeholguin.traveler;
 
 
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -19,9 +20,10 @@ import luisfelipeholguin.traveler.fragments.PerfilFragment;
 import luisfelipeholguin.traveler.fragments.PublicarFragment;
 import luisfelipeholguin.traveler.fragments.ReservasFragment;
 import luisfelipeholguin.traveler.fragments.ViajesFragment;
+import luisfelipeholguin.traveler.util.Constants;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements ViajesFragment.OnHomeItemClick {
 
     ViewPager pager;
     PagerAdapter adapter;
@@ -57,6 +59,18 @@ public class MainActivity extends AppCompatActivity  {
         pager.setAdapter(adapter);
 
         tabs.setupWithViewPager(pager);
+        tabs.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabs.getTabAt(1).setIcon(R.drawable.ic_publicar);
+        tabs.getTabAt(2).setIcon(R.drawable.ic_reservas);
+        tabs.getTabAt(3).setIcon(R.drawable.ic_perfil);
 
+    }
+
+    @Override
+    public void onHomeClick(int pos) {
+
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(Constants.POSITION_FROM_FRAGMENT,pos);
+        startActivity(intent);
     }
 }
