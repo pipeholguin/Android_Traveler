@@ -7,6 +7,8 @@
             name="viaje"
             type="luisfelipeholguin.traveler.models.Viaje"/>
     </data>
+
+
     <RelativeLayout
 
         android:layout_width="match_parent"
@@ -20,11 +22,178 @@
         app:imgUrl="@{viaje.imagen}"
         android:scaleType="centerCrop"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img"
-        android:text="@{viaje.destino}"/>
+
+        <TextView
+            android:id="@+id/text_origen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:text="Origen"
+            tools:text="Origen" />
+
+        <TextView
+            android:id="@+id/origen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text_origen"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_below="@+id/img"
+            android:text="@{viaje.origen}"
+            android:textStyle="bold"
+            tools:text="Origen" />
+
+        <TextView
+            android:id="@+id/text_destino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_origen"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:text="Destino"
+            tools:text="Destino" />
+
+        <TextView
+            android:id="@+id/destino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text_destino"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_below="@+id/origen"
+            android:text="@{viaje.destino}"
+            android:textStyle="bold"
+            tools:text="Desino" />
+
+        <TextView
+            android:id="@+id/text_cupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_destino"
+            android:text="Cupos"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            tools:text="Cupos" />
+
+        <TextView
+            android:id="@+id/cupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_toRightOf="@+id/text_cupos"
+            android:layout_below="@+id/destino"
+            android:text='@{""+viaje.asientos}'
+            android:textStyle="bold"
+            tools:text="Asientos" />
+
+        <TextView
+            android:id="@+id/text_fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_cupos"
+            android:text="Fecha"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            tools:text="Fecha" />
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_toRightOf="@+id/text_fecha"
+            android:layout_below="@+id/cupos"
+            android:text='@{""+viaje.fecha}'
+            android:textStyle="bold"
+            tools:text="Fecha" />
+
+
+        <TextView
+            android:id="@+id/text_carro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_fecha"
+            android:text="Vehiculo"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            tools:text="Vehiculo" />
+
+        <TextView
+            android:id="@+id/carro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_toRightOf="@+id/text_carro"
+            android:layout_below="@+id/fecha"
+            android:text='@{""+viaje.carro}'
+            android:textStyle="bold"
+            tools:text="Carro" />
+
+        <TextView
+            android:id="@+id/text_contacto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_carro"
+            android:text="Contacto"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_marginLeft="@dimen/margin_detail"
+            tools:text="Contacto" />
+
+        <TextView
+            android:id="@+id/contacto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_detail"
+            android:layout_marginTop="@dimen/margin_detail"
+            android:layout_toRightOf="@+id/text_contacto"
+            android:layout_below="@+id/carro"
+            android:text='@{""+viaje.contacto}'
+            android:textStyle="bold"
+            tools:text="Contacto" />
+
+        <TableLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/llamar"
+                    android:text="Llamar"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:layout_margin="1dp"/>
+
+                <Button
+                    android:id="@+id/reservar"
+                    android:text="Reservar"
+                    android:textColor="@color/colorAccent"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"/>
+
+            </TableRow>
+
+
+
+
+
+
+        </TableLayout>
+
+
+
 
     </RelativeLayout>
+
 </layout>

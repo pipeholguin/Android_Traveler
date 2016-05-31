@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onLogin(String status, Usuario usuario) {
+    public void onLogin(String status, String usuario) {
         Log.d("STATUS: ",""+status);
         if (status.equals("OK")){
             SharedPreferences.Editor editor= preferences.edit();
