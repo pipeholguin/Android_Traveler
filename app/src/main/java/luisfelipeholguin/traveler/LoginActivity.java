@@ -37,11 +37,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         api = new UsuarioApi(this);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
 
     @Override
     public void onClick(View v) {

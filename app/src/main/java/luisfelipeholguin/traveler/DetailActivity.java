@@ -21,6 +21,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     ActivityDetailBinding binding;
     int num;
+   int pos;
 
 
     @Override
@@ -29,8 +30,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        pos = getIntent().getExtras().getInt(Constants.POSITION_FROM_FRAGMENT);
 
-        int pos = getIntent().getExtras().getInt(Constants.POSITION_FROM_FRAGMENT);
         Viaje viaje = L.data.get(pos);
         Log.i("VIAJE", viaje.getDestino().toString() + " " + viaje.getCarro().toString());
         binding.setViaje(viaje);
