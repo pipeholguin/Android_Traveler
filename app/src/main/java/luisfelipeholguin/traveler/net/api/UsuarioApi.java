@@ -22,7 +22,7 @@ public class UsuarioApi extends HttpApi {
     static final int REQUEST_REGISTER = 1;
 
     public interface OnLogin{
-        void onLogin(String status, Usuario usuario);
+        void onLogin(String status, String usuario);
     }
 
     public interface OnRegister{

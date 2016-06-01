@@ -6,7 +6,7 @@ package luisfelipeholguin.traveler.models;
 public class Login {
 
     String status;
-    Usuario usuario;
+    String usuario;
 
     public String getStatus() {
         return status;
@@ -16,11 +16,11 @@ public class Login {
         this.status = status;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 }
