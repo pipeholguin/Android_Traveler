@@ -39,6 +39,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "Registro correcto", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Error en el registro", Toast.LENGTH_SHORT).show();
         }

@@ -57,7 +57,7 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
         String fecha = binding.fecha.getText().toString();
 
         api.publicar(binding.origen.getText().toString(),binding.destino.getText().toString(),
-                Integer.parseInt(binding.precio.getText().toString()),
+                binding.precio.getText().toString(),
                 Integer.parseInt(binding.asientos.getText().toString()),
                 fecha,binding.carro.getText().toString(), binding.image.getText().toString(),
                 Integer.parseInt(binding.contacto.getText().toString()),this);

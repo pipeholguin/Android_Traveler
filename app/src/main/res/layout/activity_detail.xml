@@ -38,10 +38,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        style="@style/Base.TextAppearance.AppCompat.Title"
                         android:id="@+id/info"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:textSize="@dimen/text_medium"
+                        android:gravity="center"
                         android:layout_marginTop="@dimen/margin_detail"
                         android:layout_marginLeft="@dimen/margin_detail"
                         android:text="Informacion General"/>
@@ -147,7 +149,7 @@
                             android:layout_marginLeft="35dp"
                             android:textColor="#b79114"
                             android:textSize="16dp"
-                            android:text='@{ "$" +viaje.precio}'
+                            android:text="@{viaje.precio}"
                             tools:text="Precio" />
                     </TableRow>
 

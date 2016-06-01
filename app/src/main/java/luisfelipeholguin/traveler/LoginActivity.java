@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (logged){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -65,10 +66,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor= preferences.edit();
             editor.putBoolean("logged", true);
-            editor.putString("usuario", usuario);
+            //editor.putString("usuario", usuario);
             editor.commit();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }else {
             Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
         }

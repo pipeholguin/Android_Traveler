@@ -23,6 +23,7 @@ public class ViajesApi extends HttpApi {
 
     static final int REQUEST_VIAJES=0;
     static final int REQUEST_PUBLICAR=1;
+    static final int REQUEST_RESERVAR=2;
 
     public interface OnViajes{
         void  onViajes(List<Viaje> data);
@@ -32,8 +33,13 @@ public class ViajesApi extends HttpApi {
         void onPublish(String status);
     }
 
+    public interface OnReserva{
+        void onReserva(String status);
+    }
+
     OnViajes onViajes;
     OnPublish onPublish;
+    OnReserva onReserva;
 
     public ViajesApi(Context context) {
         super(context);
@@ -55,7 +61,7 @@ public class ViajesApi extends HttpApi {
         }
     }
 
-    public void publicar(String origen, String destino, int precio,
+    public void publicar(String origen, String destino, String precio,
                               int asientos, String fecha, String carro, String imagen,
                               int contacto, OnPublish onPublish){
         this.onPublish= onPublish;
@@ -87,6 +93,24 @@ public class ViajesApi extends HttpApi {
         }
     }
 
+    public void reservar(String user, int idViaje, OnReserva onReserva)
+    {
+        this.onReserva = onReserva;
+        String url = urlBase+context.getString(R.string.url_reserva)+user+"/"+idViaje;
+        HttpAsyncTask task = makeTask(REQUEST_RESERVAR, HttpAsyncTask.METHOD_POST);
+        task.execute(url,"");
+        Log.d("TASK EXEC", "URL:"+url);
+    }
+
+    private void processReservar(Response response){
+        Log.d("RPTAmsg",""+response.getMsg());
+        Log.d("VALIDATERPTA: ",""+validateError(response));
+        if (validateError(response)){
+            Viaje viaje = gson.fromJson(response.getMsg(), Viaje.class);
+            onReserva.onReserva(viaje.getStatus());
+        }
+    }
+
     @Override
     public void onResponse(int request, Response response) {
 
@@ -96,6 +120,9 @@ public class ViajesApi extends HttpApi {
                 break;
             case REQUEST_PUBLICAR:
                 processPublicar(response);
+                break;
+            case REQUEST_RESERVAR:
+                processReservar(response);
                 break;
         }
 

@@ -6,6 +6,12 @@
             name="onClick"
             type="android.view.View.OnClickListener"/>
     </data>
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -71,4 +77,5 @@
             android:text="@string/publicar"
             app:setOnClickListener="@{onClick}"/>
     </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </layout>
