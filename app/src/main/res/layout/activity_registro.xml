@@ -20,28 +20,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="luisfelipeholguin.traveler.RegistroActivity">
 
+    <TableRow>
+
+        <ImageView
+            android:src="@drawable/ic_name"
+            android:paddingTop="@dimen/text_medium"/>
+
     <EditText
         android:id="@+id/nombre"
          android:inputType="text"
         android:hint="Nombre"/>
+
+    </TableRow>
+
+    <TableRow>
+
+    <ImageView
+        android:src="@drawable/ic_mail"
+        android:paddingTop="@dimen/text_medium"/>
     <EditText
         android:id="@+id/correo"
         android:inputType="textEmailAddress"
         android:hint="Correo"/>
+    </TableRow>
+    <TableRow>
+
+    <ImageView
+        android:src="@drawable/ic_call"
+        android:paddingTop="@dimen/text_medium"/>
     <EditText
         android:id="@+id/cel"
         android:inputType="number"
+        android:layout_width="140dp"
         android:hint="Celular"/>
+    </TableRow>
+
+    <TableRow>
+
+    <ImageView
+        android:src="@drawable/ic_usr"
+        android:paddingTop="@dimen/text_medium"/>
     <EditText
         android:id="@+id/usuario"
         android:inputType="text"
         android:hint="Usuario"/>
+    </TableRow>
+
+    <TableRow>
+
+    <ImageView
+        android:src="@drawable/ic_pass"
+        android:paddingTop="@dimen/text_medium"/>
+
     <EditText
         android:id="@+id/password"
         android:inputType="textPassword"
         android:hint="Password"/>
 
+    </TableRow>
+
+
+
     <Button
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/text"
         android:text="Registrar"
         app:setOnClickListener="@{onClick}"/>
 
