@@ -31,12 +31,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="@string/precio"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="">
-
-        </Spinner>
         <EditText
             android:id="@+id/asientos"
             android:layout_width="match_parent"
