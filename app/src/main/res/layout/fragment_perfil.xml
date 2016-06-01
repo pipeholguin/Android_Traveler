@@ -5,17 +5,51 @@
         <variable
             name="onClick"
             type="android.view.View.OnClickListener"/>
+        <variable
+            name="usuario"
+            type="luisfelipeholguin.traveler.models.Usuario"/>
     </data>
-    <FrameLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="luisfelipeholguin.traveler.fragments.PerfilFragment">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/head"
+            android:background="@color/text2"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile"
+            android:layout_width="@dimen/head_prfile"
+            android:layout_height="@dimen/head_prfile"
+            android:layout_margin="@dimen/small"
+            android:src="@drawable/gris"
+            android:layout_alignBottom="@id/banner"
+
+            />
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text"
+            android:padding="@dimen/small"
+            tools:text="Usuario NN"
+            android:layout_toRightOf="@id/profile"
+            android:layout_alignBottom="@id/profile"
+            />
 
         <Button
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cerrar Sesion"
             app:setOnClickListener="@{onClick}"/>
 
-    </FrameLayout>
+    </RelativeLayout>
+
 </layout>

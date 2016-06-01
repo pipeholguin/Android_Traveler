@@ -2,6 +2,7 @@ package luisfelipeholguin.traveler;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
 
@@ -55,8 +62,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onLogin(String status, String usuario) {
         Log.d("STATUS: ",""+status);
         if (status.equals("OK")){
+            preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor= preferences.edit();
             editor.putBoolean("logged", true);
+            editor.putString("usuario", usuario);
             editor.commit();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
