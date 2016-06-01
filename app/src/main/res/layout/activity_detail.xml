@@ -31,11 +31,12 @@
                     android:layout_height="200dp"
                     app:imgUrl="@{viaje.imagen}"
                     android:scaleType="centerCrop"
-                    app:layout_scrollFlags="scroll|enterAlways"/>
+                    />
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|enterAlways">
 
                     <TextView
                         style="@style/Base.TextAppearance.AppCompat.Title"
@@ -51,7 +52,7 @@
                 <TableRow>
 
                     <ImageView
-                        android:src="@drawable/ic_usr"
+                        android:src="@drawable/ic_origen"
                         android:layout_marginRight="@dimen/small"/>
 
                     <TextView
@@ -70,10 +71,20 @@
                         android:textStyle="bold"
                         tools:text="Origen" />
 
+                    <TextView
+                        android:id="@+id/precio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:textColor="#b79114"
+                        android:textSize="18dp"
+                        android:text='@{ "$" +viaje.precio}'
+                        tools:text="Precio" />
+
                 </TableRow>
                     <TableRow>
                         <ImageView
-                            android:src="@drawable/ic_usr"
+                            android:src="@drawable/ic_destino"
                             android:layout_marginRight="@dimen/small"/>
                         <TextView
                             android:id="@+id/text_destino"
@@ -97,7 +108,7 @@
                     <TableRow>
 
                         <ImageView
-                            android:src="@drawable/ic_usr"
+                            android:src="@drawable/ic_group"
                             android:layout_marginRight="@dimen/small"/>
                         <TextView
                             android:id="@+id/text_cupos"
@@ -120,7 +131,7 @@
 
                     <TableRow>
                         <ImageView
-                            android:src="@drawable/ic_usr"
+                            android:src="@drawable/ic_fecha"
                             android:layout_marginRight="@dimen/small"/>
                         <TextView
                             android:id="@+id/text_fecha"
@@ -142,21 +153,12 @@
                             android:textStyle="bold"
                             tools:text="Fecha" />
 
-                        <TextView
-                            android:id="@+id/precio"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
-                            android:textColor="#b79114"
-                            android:textSize="16dp"
-                            android:text="@{viaje.precio}"
-                            tools:text="Precio" />
                     </TableRow>
 
                     <TableRow>
 
                         <ImageView
-                            android:src="@drawable/ic_usr"
+                            android:src="@drawable/ic_car"
                             android:layout_marginRight="@dimen/small"/>
                         <TextView
                             android:id="@+id/text_carro"
@@ -261,18 +263,8 @@
                             android:layout_margin="1dp"/>
 
                 </TableRow>
-
                 </TableLayout>
-
             </LinearLayout>
-
-
-
         </android.support.v4.widget.NestedScrollView>
-
-
-
     </android.support.design.widget.CoordinatorLayout>
-
-
 </layout>

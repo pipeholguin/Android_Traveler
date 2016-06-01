@@ -6,55 +6,129 @@
             name="onClick"
             type="android.view.View.OnClickListener"/>
     </data>
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <LinearLayout
+
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/high"
         tools:context="luisfelipeholguin.traveler.fragments.PublicarFragment">
 
+        <TableRow>
+            <ImageView
+                android:layout_marginTop="@dimen/margin_detail"
+                android:src="@drawable/ic_origen"
+                android:layout_marginRight="@dimen/small"/>
         <EditText
             android:id="@+id/origen"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+
             android:inputType="text"
             android:hint="@string/origen"/>
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:layout_marginTop="@dimen/small"
+                android:src="@drawable/ic_destino"
+                android:layout_marginRight="@dimen/small"/>
+
+
         <EditText
             android:id="@+id/destino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/destino"/>
+        </TableRow>
+        <TableRow>
+
+            <ImageView
+                android:layout_marginTop="@dimen/small"
+                android:src="@drawable/ic_destino"
+                android:layout_marginRight="@dimen/small"/>
+
         <EditText
             android:id="@+id/precio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="@string/precio"/>
+
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_marginTop="@dimen/small"
+                android:src="@drawable/ic_group"
+                android:layout_marginRight="@dimen/small"/>
+
+
+
         <EditText
             android:id="@+id/asientos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="@string/asientos_disponibles"/>
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_marginTop="@dimen/small"
+                android:src="@drawable/ic_fecha"
+                android:layout_marginRight="@dimen/small"/>
         <EditText
             android:id="@+id/fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
             android:hint="@string/fecha"/>
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:src="@drawable/ic_car"
+                android:layout_marginRight="@dimen/small"
+                android:layout_marginTop="@dimen/small"/>
         <EditText
             android:id="@+id/carro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/carro"/>
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:src="@drawable/ic_car"
+                android:layout_marginRight="@dimen/small"
+                android:layout_marginTop="@dimen/small"/>
+
+            <LinearLayout android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/foto"
+                    android:text="C"
+                    app:setOnClickListener="@{onClick}"/>
+                <Button
+                    android:text="S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seleccion"
+                    app:setOnClickListener="@{onClick}"/>
+
+            </LinearLayout>
+
+
         <EditText
             android:id="@+id/image"
             android:layout_width="match_parent"
@@ -62,6 +136,8 @@
             android:inputType="text"
             android:hint="@string/imagen"
             />
+        </TableRow>
+
         <EditText
             android:id="@+id/contacto"
             android:layout_width="match_parent"
@@ -76,6 +152,7 @@
             android:background="@color/colorPrimaryDark"
             android:text="@string/publicar"
             app:setOnClickListener="@{onClick}"/>
-    </LinearLayout>
+
+    </TableLayout>
     </android.support.v4.widget.NestedScrollView>
 </layout>
