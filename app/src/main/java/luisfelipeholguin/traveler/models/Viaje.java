@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public class Viaje {
 
-    String origen, destino, carro, imagen, precio, status;
-    int  asientos, contacto;
+    String origen, destino, carro, imagen,  status;
+    int  asientos, contacto, precio;
     Date fecha;
 
     public String getStatus() {
@@ -51,11 +51,11 @@ public class Viaje {
         this.imagen = imagen;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

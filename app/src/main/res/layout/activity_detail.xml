@@ -39,12 +39,11 @@
                     app:layout_scrollFlags="scroll|enterAlways">
 
                     <TextView
-                        style="@style/Base.TextAppearance.AppCompat.Title"
                         android:id="@+id/info"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:textSize="@dimen/text_medium"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:layout_marginTop="@dimen/margin_detail"
                         android:layout_marginLeft="@dimen/margin_detail"
                         android:text="Informacion General"/>
@@ -67,6 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_detail"
+
                         android:text="@{viaje.origen}"
                         android:textStyle="bold"
                         tools:text="Origen" />
@@ -75,10 +75,10 @@
                         android:id="@+id/precio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
+                        android:layout_marginLeft="5dp"
                         android:textColor="#b79114"
                         android:textSize="18dp"
-                        android:text='@{ "$" +viaje.precio}'
+                       android:text='@{"$"+viaje.precio}'
                         tools:text="Precio" />
 
                 </TableRow>
@@ -149,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/margin_detail"
                             android:layout_marginTop="@dimen/margin_detail"
-                            android:text='@{""+viaje.fecha}'
+                            app:textDate="@{viaje.fecha}"
                             android:textStyle="bold"
                             tools:text="Fecha" />
 

@@ -7,19 +7,65 @@
             type="android.view.View.OnClickListener"/>
     </data>
 
+
+
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/selected"
+                    android:src="@drawable/nonimage"
+                    android:layout_height="@dimen/height_image"
+                    android:layout_width="@dimen/width_image"
+                    android:scaleType="centerCrop"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/foto"
+                    android:layout_alignBottom="@+id/selected"
+                    android:layout_alignLeft="@+id/selected"
+                    android:src="@drawable/ic_cam"
+                    app:setOnClickListener="@{onClick}"/>
+                <ImageButton
+                    android:src="@drawable/ic_image"
+                    android:layout_gravity="bottom"
+                    android:layout_toRightOf="@id/foto"
+                    android:layout_alignBottom="@+id/selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seleccion"
+                    app:setOnClickListener="@{onClick}"/>
+
+
+
+            </RelativeLayout>
+
+
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/high"
         tools:context="luisfelipeholguin.traveler.fragments.PublicarFragment">
+
+
 
         <TableRow>
             <ImageView
@@ -28,7 +74,7 @@
                 android:layout_marginRight="@dimen/small"/>
         <EditText
             android:id="@+id/origen"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/width_text_publicar"
             android:layout_height="wrap_content"
 
             android:inputType="text"
@@ -107,52 +153,36 @@
         </TableRow>
         <TableRow>
             <ImageView
-                android:src="@drawable/ic_car"
+                android:src="@drawable/ic_call"
                 android:layout_marginRight="@dimen/small"
                 android:layout_marginTop="@dimen/small"/>
-
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/foto"
-                    android:text="C"
-                    app:setOnClickListener="@{onClick}"/>
-                <Button
-                    android:text="S"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/seleccion"
-                    app:setOnClickListener="@{onClick}"/>
-
-            </LinearLayout>
-
-
-        <EditText
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/imagen"
-            />
-        </TableRow>
-
         <EditText
             android:id="@+id/contacto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="@string/contacto"/>
-        <Button
-            android:id="@+id/publicar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text"
-            android:background="@color/colorPrimaryDark"
-            android:text="@string/publicar"
-            app:setOnClickListener="@{onClick}"/>
+        </TableRow>
+
+
+
+
 
     </TableLayout>
+
+            <Button
+                android:id="@+id/publicar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/publicar"
+                app:setOnClickListener="@{onClick}"/>
+
+        </LinearLayout>
+
+
     </android.support.v4.widget.NestedScrollView>
+
+
 </layout>
