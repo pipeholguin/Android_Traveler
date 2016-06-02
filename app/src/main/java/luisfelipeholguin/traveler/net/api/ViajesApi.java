@@ -61,7 +61,7 @@ public class ViajesApi extends HttpApi {
         }
     }
 
-    public void publicar(String origen, String destino, String precio,
+    public void publicar(String origen, String destino, int precio,
                               int asientos, String fecha, String carro, String imagen,
                               int contacto, OnPublish onPublish){
         this.onPublish= onPublish;

@@ -26,4 +26,7 @@
     <string name="imagen">Imagen</string>
     <string name="contacto">Contacto</string>
     <string name="publicar">Publicar</string>
+    <string name="text_asientos">Asientos</string>
+    <string name="text_cupos">Cupos</string>
+    <string name="text_destino">Destino</string>
 </resources>

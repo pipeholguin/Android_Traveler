@@ -11,4 +11,12 @@
     <dimen name="login_text_widht">150dp</dimen>
     <dimen name="text_medium">16sp</dimen>
     <dimen name="text_small">14sp</dimen>
+    <dimen name="height_image">120dp</dimen>
+    <dimen name="width_image">150dp</dimen>
+    <dimen name="width_text_publicar">100dp</dimen>
+    <dimen name="size_icon">20dp</dimen>
+    <dimen name="margintop_1_item">20dp</dimen>
+    <dimen name="margintop_2_item">40dp</dimen>
+    <dimen name="margin_right_parent">5dp</dimen>
+    <dimen name="margin_top_lastitem">85dp</dimen>
 </resources>

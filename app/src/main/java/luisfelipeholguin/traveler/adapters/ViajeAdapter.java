@@ -63,6 +63,7 @@ public class ViajeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     static class ViajeViewHolder extends RecyclerView.ViewHolder{
 
+
         TemplateViajeBinding binding;
 
         public ViajeViewHolder(View itemView){
