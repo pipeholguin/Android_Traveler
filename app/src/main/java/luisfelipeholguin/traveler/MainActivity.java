@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ViajesFragment.On
         tabs.setupWithViewPager(pager);
         tabs.getTabAt(0).setIcon(R.drawable.ic_home);
         tabs.getTabAt(1).setIcon(R.drawable.ic_publicar);
-        tabs.getTabAt(2).setIcon(R.drawable.ic_reservas);
+        tabs.getTabAt(2).setIcon(R.drawable.ic_fav);
         tabs.getTabAt(3).setIcon(R.drawable.ic_perfil);
     }
 

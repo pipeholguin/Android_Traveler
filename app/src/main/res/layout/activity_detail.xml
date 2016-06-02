@@ -255,7 +255,7 @@
 
                         <Button
                             android:id="@+id/reservar"
-                            android:text="Reservar"
+                            android:text="Favorito"
                             android:textColor="@color/text"
                             android:background="@color/colorPrimaryDark"
                             android:layout_width="match_parent"
