@@ -24,6 +24,7 @@ public class ViajesApi extends HttpApi {
     static final int REQUEST_VIAJES=0;
     static final int REQUEST_PUBLICAR=1;
     static final int REQUEST_RESERVAR=2;
+    static final int REQUEST_GETRESERVAS=3;
 
     public interface OnViajes{
         void  onViajes(List<Viaje> data);
@@ -111,6 +112,23 @@ public class ViajesApi extends HttpApi {
         }
     }
 
+    public void getReservas(OnViajes onViajes){
+        this.onViajes = onViajes;
+        String url = urlBase + context.getString(R.string.url_reserva)+"luis";
+        HttpAsyncTask task = makeTask(REQUEST_GETRESERVAS, HttpAsyncTask.METHOD_GET);
+        task.execute(url);
+        Log.d("TASK EXEC", "URL:"+url);
+    }
+
+    private void processGetReserva(Response response) {
+
+        if (validateError(response)) {
+            Type type = new TypeToken<List<Viaje>>(){}.getType();
+            List<Viaje> data = gson.fromJson(response.getMsg(), type);
+            onViajes.onViajes(data);
+        }
+    }
+
     @Override
     public void onResponse(int request, Response response) {
 
@@ -123,6 +141,9 @@ public class ViajesApi extends HttpApi {
                 break;
             case REQUEST_RESERVAR:
                 processReservar(response);
+                break;
+            case REQUEST_GETRESERVAS:
+                processGetReserva(response);
                 break;
         }
 

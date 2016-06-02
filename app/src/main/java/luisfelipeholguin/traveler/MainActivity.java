@@ -23,7 +23,7 @@ import luisfelipeholguin.traveler.fragments.ViajesFragment;
 import luisfelipeholguin.traveler.util.Constants;
 
 
-public class MainActivity extends AppCompatActivity implements ViajesFragment.OnHomeItemClick {
+public class MainActivity extends AppCompatActivity implements ViajesFragment.OnHomeItemClick, ReservasFragment.OnHomeItemClick {
 
     ViewPager pager;
     PagerAdapter adapter;
@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements ViajesFragment.On
 
     @Override
     public void onHomeClick(int pos) {
-
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.POSITION_FROM_FRAGMENT,pos);
         startActivity(intent);
