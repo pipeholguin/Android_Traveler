@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import luisfelipeholguin.traveler.databinding.ActivityLoginBinding;
 import luisfelipeholguin.traveler.models.Usuario;
 import luisfelipeholguin.traveler.net.api.UsuarioApi;
@@ -18,16 +20,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ActivityLoginBinding binding;
     UsuarioApi api;
     SharedPreferences preferences;
+    Usuario logueado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences("preferencias", MODE_PRIVATE);
         boolean logged = preferences.getBoolean("logged", false);
-        if (logged){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
+        try {
+            logueado = Usuario.findById(Usuario.class, 1);
+        }catch (Exception e){
+            logueado= null;
+            Log.d("LOGIN","CATCH SET NOMBRE: null");
+        }
+
+        if(logueado != null){
+            Log.d("LOGIN",""+logueado.getNombre());
+            if (!logueado.getNombre().equals("nil")){
+                Log.d("LOGIN","IF TRUE");
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -63,6 +77,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editor.putBoolean("logged", true);
             //editor.putString("usuario", usuario);
             editor.commit();
+            Usuario usuarioLogeado = Usuario.findById(Usuario.class,1);
+            if (usuarioLogeado == null){
+                usuarioLogeado = new Usuario();
+            }
+            usuarioLogeado.setNombre(usuario);
+            usuarioLogeado.save();
+            Log.d("LOGIN","USUARIO LOGUEADO: "+usuario);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

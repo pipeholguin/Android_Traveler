@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import luisfelipeholguin.traveler.databinding.ActivityDetailBinding;
+import luisfelipeholguin.traveler.models.Usuario;
 import luisfelipeholguin.traveler.models.Viaje;
 import luisfelipeholguin.traveler.net.api.ViajesApi;
 import luisfelipeholguin.traveler.util.Constants;
@@ -52,7 +53,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             int id = pos+1;
             //String user = preferences.getString("usuario","null");
             ViajesApi api = new ViajesApi(this);
-            api.reservar("luis",id,this);
+            Usuario userLogged = Usuario.findById(Usuario.class,1);
+            api.reservar(userLogged.getNombre(),id,this);
         }
 
         if (v == binding.llamar)

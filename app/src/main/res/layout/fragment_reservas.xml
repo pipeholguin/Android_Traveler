@@ -21,5 +21,15 @@
 
         </android.support.v7.widget.RecyclerView>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/actualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/margintop_1_item"
+            android:src="@drawable/ic_reload"
+            android:clickable="true"
+            />
+
     </FrameLayout>
 </layout>

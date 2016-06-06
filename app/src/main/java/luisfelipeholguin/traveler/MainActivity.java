@@ -23,7 +23,8 @@ import luisfelipeholguin.traveler.fragments.ViajesFragment;
 import luisfelipeholguin.traveler.util.Constants;
 
 
-public class MainActivity extends AppCompatActivity implements ViajesFragment.OnHomeItemClick, ReservasFragment.OnHomeItemClick {
+public class MainActivity extends AppCompatActivity implements ViajesFragment.OnHomeItemClick,
+        ReservasFragment.OnHomeItemClick, PerfilFragment.OnCloseSession {
 
     ViewPager pager;
     PagerAdapter adapter;
@@ -71,5 +72,15 @@ public class MainActivity extends AppCompatActivity implements ViajesFragment.On
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.POSITION_FROM_FRAGMENT,pos);
         startActivity(intent);
+    }
+
+    @Override
+    public void onCloseSession(boolean state) {
+        if (state)
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

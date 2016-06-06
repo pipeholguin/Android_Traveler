@@ -1,20 +1,24 @@
 package luisfelipeholguin.traveler.models;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by luisfelipeholguin on 25/05/16.
  */
-public class Usuario {
+public class Usuario extends SugarRecord {
 
-    int id, celular;
-    String nombre, usuario, password, correo;
+    int celular;
+    //Long id;
+    String nombre;
+    String usuario, password, correo;
 
-    public int getId() {
+    /*public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 
     public int getCelular() {
         return celular;

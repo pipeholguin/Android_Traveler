@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.Button;
 import luisfelipeholguin.traveler.LoginActivity;
 import luisfelipeholguin.traveler.R;
 import luisfelipeholguin.traveler.databinding.FragmentPerfilBinding;
+import luisfelipeholguin.traveler.models.Usuario;
+import luisfelipeholguin.traveler.models.Viaje;
 import luisfelipeholguin.traveler.net.api.UsuarioApi;
 
 /**
@@ -23,14 +26,23 @@ import luisfelipeholguin.traveler.net.api.UsuarioApi;
  */
 public class PerfilFragment extends Fragment implements View.OnClickListener{
 
+    public interface OnCloseSession{
+        void onCloseSession(boolean state);
+    }
+
     FragmentPerfilBinding binding;
+    OnCloseSession onCloseSession;
 
 
     public PerfilFragment() {
         // Required empty public constructor
     }
 
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        onCloseSession = (OnCloseSession) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +61,14 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
+        Usuario userLogged = Usuario.findById(Usuario.class,1);
+        userLogged.setNombre("nil");
+        userLogged.save();
+        /*userLogged.delete();
+        Usuario.executeQuery("VACUUM");*/
+        Viaje.deleteAll(Viaje.class);
+        onCloseSession.onCloseSession(true);
+        Log.d("PERFIL","SESSION CLOSED"+userLogged.getNombre());
     }
 
 

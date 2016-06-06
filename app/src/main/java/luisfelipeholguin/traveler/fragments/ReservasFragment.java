@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import luisfelipeholguin.traveler.util.L;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReservasFragment extends Fragment implements ViajesApi.OnViajes, ViajeAdapter.OnItemClickAdpapter {
+public class ReservasFragment extends Fragment implements ViajesApi.OnViajes, ViajeAdapter.OnItemClickAdpapter, View.OnClickListener {
 
     public interface OnHomeItemClick{
         void  onHomeClick(int pos);
@@ -56,24 +57,45 @@ public class ReservasFragment extends Fragment implements ViajesApi.OnViajes, Vi
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(manager);
 
-        ViajesApi api = new ViajesApi(getActivity());
-        api.getReservas(this);
-
+        loadReservas();
+        binding.actualizar.setOnClickListener(this);
         return binding.getRoot();
+    }
+
+    private void loadReservas() {
+        L.data.clear();
+        List<Viaje> data = Viaje.listAll(Viaje.class);
+        if (data != null){
+            for (Viaje v: data){
+                L.data.add(v);
+            }
+            adapter.notifyDataSetChanged();
+        } else {
+            Log.d("RESERVAS","DATA: NULL");
+        }
     }
 
     @Override
     public void onViajes(List<Viaje> data) {
+        Viaje.deleteAll(Viaje.class);
         for (Viaje v: data){
-            L.data.add(v);
+            v.save();
         }
-        adapter.notifyDataSetChanged();
+        loadReservas();
     }
 
     @Override
     public void onClick(View v) {
-        int pos = binding.recycler.getChildAdapterPosition(v);
-        onHomeItemClick.onHomeClick(pos);
+        switch (v.getId()){
+            case R.id.recycler:
+                int pos = binding.recycler.getChildAdapterPosition(v);
+                onHomeItemClick.onHomeClick(pos);
+                break;
+            case  R.id.actualizar:
+                ViajesApi api = new ViajesApi(getActivity());
+                api.getReservas(this);
+                break;
+        }
     }
 
 }

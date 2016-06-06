@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import luisfelipeholguin.traveler.R;
+import luisfelipeholguin.traveler.models.Usuario;
 import luisfelipeholguin.traveler.models.Viaje;
 import luisfelipeholguin.traveler.net.HttpApi;
 import luisfelipeholguin.traveler.net.HttpAsyncTask;
@@ -114,7 +115,8 @@ public class ViajesApi extends HttpApi {
 
     public void getReservas(OnViajes onViajes){
         this.onViajes = onViajes;
-        String url = urlBase + context.getString(R.string.url_reserva)+"luis";
+        Usuario userLogged = Usuario.findById(Usuario.class,1);
+        String url = urlBase + context.getString(R.string.url_reserva)+userLogged.getNombre();
         HttpAsyncTask task = makeTask(REQUEST_GETRESERVAS, HttpAsyncTask.METHOD_GET);
         task.execute(url);
         Log.d("TASK EXEC", "URL:"+url);

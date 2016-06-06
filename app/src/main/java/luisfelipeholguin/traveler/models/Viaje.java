@@ -1,15 +1,18 @@
 package luisfelipeholguin.traveler.models;
 
+import com.orm.SugarRecord;
+
 import java.util.Date;
 
 /**
  * Created by luisfelipeholguin on 30/05/16.
  */
-public class Viaje {
+public class Viaje extends SugarRecord {
 
     String origen, destino, carro, imagen,  status;
     int  asientos, contacto, precio;
     Date fecha;
+    Usuario usuario;
 
     public String getStatus() {
         return status;
