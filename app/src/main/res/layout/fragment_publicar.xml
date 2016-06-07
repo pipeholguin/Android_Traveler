@@ -22,162 +22,153 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_space">
 
                 <ImageView
                     android:layout_marginTop="@dimen/small"
-                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
                     android:id="@+id/selected"
-                    android:src="@drawable/nonimage"
                     android:layout_height="@dimen/height_image"
                     android:layout_width="@dimen/width_image"
                     android:scaleType="centerCrop"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/foto"
-                    android:layout_alignBottom="@+id/selected"
-                    android:layout_alignLeft="@+id/selected"
-                    android:src="@drawable/ic_cam"
-                    app:setOnClickListener="@{onClick}"/>
+
                 <ImageButton
                     android:src="@drawable/ic_image"
-                    android:layout_gravity="bottom"
-                    android:layout_toRightOf="@id/foto"
-                    android:layout_alignBottom="@+id/selected"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/seleccion"
                     app:setOnClickListener="@{onClick}"/>
 
 
 
-            </RelativeLayout>
+            </FrameLayout>
 
 
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="luisfelipeholguin.traveler.fragments.PublicarFragment">
-
-
-
-        <TableRow>
-            <ImageView
-                android:layout_marginTop="@dimen/margin_detail"
-                android:src="@drawable/ic_origen"
-                android:layout_marginRight="@dimen/small"/>
-        <EditText
-            android:id="@+id/origen"
-            android:layout_width="@dimen/width_text_publicar"
-            android:layout_height="wrap_content"
-
-            android:inputType="text"
-            android:hint="@string/origen"/>
-        </TableRow>
-        <TableRow>
-            <ImageView
-                android:layout_marginTop="@dimen/small"
-                android:src="@drawable/ic_destino"
-                android:layout_marginRight="@dimen/small"/>
-
-
-        <EditText
-            android:id="@+id/destino"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/destino"/>
-        </TableRow>
-        <TableRow>
-
-            <ImageView
-                android:layout_marginTop="@dimen/small"
-                android:src="@drawable/ic_destino"
-                android:layout_marginRight="@dimen/small"/>
-
-        <EditText
-            android:id="@+id/precio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="@string/precio"/>
-
-        </TableRow>
-
-        <TableRow>
-            <ImageView
-                android:layout_marginTop="@dimen/small"
-                android:src="@drawable/ic_group"
-                android:layout_marginRight="@dimen/small"/>
-
-
-
-        <EditText
-            android:id="@+id/asientos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="@string/asientos_disponibles"/>
-        </TableRow>
-
-        <TableRow>
-            <ImageView
-                android:layout_marginTop="@dimen/small"
-                android:src="@drawable/ic_fecha"
-                android:layout_marginRight="@dimen/small"/>
-        <EditText
-            android:id="@+id/fecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:hint="@string/fecha"/>
-        </TableRow>
-
-        <TableRow>
-            <ImageView
-                android:src="@drawable/ic_car"
-                android:layout_marginRight="@dimen/small"
-                android:layout_marginTop="@dimen/small"/>
-        <EditText
-            android:id="@+id/carro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/carro"/>
-        </TableRow>
-        <TableRow>
-            <ImageView
-                android:src="@drawable/ic_call"
-                android:layout_marginRight="@dimen/small"
-                android:layout_marginTop="@dimen/small"/>
-        <EditText
-            android:id="@+id/contacto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="@string/contacto"/>
-        </TableRow>
-
-
-
-
-
-    </TableLayout>
-
-            <Button
-                android:id="@+id/publicar"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text"
-                android:background="@color/colorPrimaryDark"
-                android:text="@string/publicar"
-                app:setOnClickListener="@{onClick}"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="luisfelipeholguin.traveler.fragments.PublicarFragment">
+
+
+
+                <TableRow>
+                    <ImageView
+                        android:layout_marginTop="@dimen/margin_detail"
+                        android:src="@drawable/ic_origen"
+                        android:layout_marginRight="@dimen/small"/>
+                    <EditText
+                        android:id="@+id/origen"
+                        android:layout_width="@dimen/width_text_publicar"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="text"
+                        android:hint="@string/origen"/>
+                </TableRow>
+                <TableRow>
+                    <ImageView
+                        android:layout_marginTop="@dimen/small"
+                        android:src="@drawable/ic_destino"
+                        android:layout_marginRight="@dimen/small"/>
+
+
+                    <EditText
+                        android:id="@+id/destino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="@string/destino"/>
+                </TableRow>
+                <TableRow>
+
+                    <ImageView
+                        android:layout_marginTop="@dimen/small"
+                        android:src="@drawable/ic_precio"
+                        android:layout_marginRight="@dimen/small"/>
+
+                    <EditText
+                        android:id="@+id/precio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/precio"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <ImageView
+                        android:layout_marginTop="@dimen/small"
+                        android:src="@drawable/ic_group"
+                        android:layout_marginRight="@dimen/small"/>
+
+
+
+                    <EditText
+                        android:id="@+id/asientos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/asientos_disponibles"/>
+                </TableRow>
+
+                <TableRow>
+                    <ImageView
+                        android:layout_marginTop="@dimen/small"
+                        android:src="@drawable/ic_fecha"
+                        android:layout_marginRight="@dimen/small"/>
+                    <EditText
+                        android:id="@+id/fecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:hint="@string/fecha"/>
+                </TableRow>
+
+                <TableRow>
+                    <ImageView
+                        android:src="@drawable/ic_car"
+                        android:layout_marginRight="@dimen/small"
+                        android:layout_marginTop="@dimen/small"/>
+                    <EditText
+                        android:id="@+id/carro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="@string/carro"/>
+                </TableRow>
+                <TableRow>
+                    <ImageView
+                        android:src="@drawable/ic_call"
+                        android:layout_marginRight="@dimen/small"
+                        android:layout_marginTop="@dimen/small"/>
+                    <EditText
+                        android:id="@+id/contacto"
+                        android:layout_width="@dimen/login_text_width"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/contacto"/>
+                </TableRow>
+
+
+                <Button
+                    android:id="@+id/publicar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/publicar"
+                    app:setOnClickListener="@{onClick}"/>
+
+
+            </TableLayout>
+
+
 
         </LinearLayout>
 

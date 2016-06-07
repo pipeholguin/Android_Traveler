@@ -83,7 +83,7 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
                 break;
 
 
-            case R.id.foto :
+            case 1:
                 Intent intentcamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intentcamera, CAMERA_REQUEST);
                 break;

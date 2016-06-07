@@ -8,71 +8,78 @@
             type="android.view.View.OnClickListener"/>
     </data>
 
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:stretchColumns="*"
-    >
-
-    <ImageView
-        android:id="@+id/icono"
-        android:layout_width="100dp"
-        android:layout_height="180dp"
-        android:src="@drawable/gris"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_width="@dimen/login_text_width"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        >
 
         <ImageView
-            android:id="@+id/img_usr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_usr"/>
-
-    <EditText
-        android:layout_width="@dimen/login_text_widht"
-        android:layout_height="wrap_content"
-        android:id="@+id/usr"
-        android:layout_toRightOf="@+id/img_usr"
-        android:layout_alignTop="@+id/img_usr"
-        android:layout_marginLeft="@dimen/small"
-        android:layout_marginRight="@dimen/small"
-
-        android:inputType="text"
-        android:hint="Usuario"/>
-
-        <ImageView
-            android:layout_below="@+id/img_usr"
-            android:id="@+id/img_pass"
-            android:layout_marginTop="@dimen/space_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_usr"/>
+            android:id="@+id/icono"
+            android:layout_width="20dp"
+            android:layout_height="80dp"
+            android:src="@drawable/gris"/>
 
 
-    <EditText
-        android:layout_alignTop="@+id/img_pass"
-        android:layout_toRightOf="@+id/img_usr"
-        android:layout_below="@+id/usr"
-        android:layout_width="@dimen/login_text_widht"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/small"
-        android:layout_marginRight="@dimen/small"
-
-        android:id="@+id/pass"
-        android:inputType="textPassword"
-        android:hint="Password"/>
-
-    </RelativeLayout>
 
 
-    <TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/img_usr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_medium"
+                android:src="@drawable/ic_usr"/>
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/usr"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginRight="@dimen/small"
+                android:inputType="text"
+                android:hint="Usuario"/>
+
+        </TableRow>
+
+        <TableRow>
+
+
+
+            <ImageView
+                android:id="@+id/img_pass"
+                android:layout_marginTop="@dimen/text_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_pass"/>
+
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pass"
+                android:inputType="textPassword"
+                android:hint="Password"/>
+
+        </TableRow>
+
+
+
+        <Button
+
+            android:id="@+id/in"
+            android:text="Entrar"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text"
+            app:setOnClickListener="@{onClick}"
+            android:layout_margin="@dimen/small"
+            />
+
         <Button
             android:background="@drawable/button"
             android:textColor="@color/colorPrimaryDark"
@@ -81,16 +88,9 @@
             app:setOnClickListener="@{onClick}"
             android:layout_margin="@dimen/small"
             />
-        <Button
-            android:id="@+id/in"
-            android:text="Entrar"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/text"
-            app:setOnClickListener="@{onClick}"
-            android:layout_margin="@dimen/small"
-            />
-    </TableRow>
-</TableLayout>
+
+
+    </TableLayout>
 
 
 
