@@ -47,65 +47,130 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_below="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
+
 
             <TableRow>
-                <ImageView
-                    android:id="@+id/img_usr"
-                    android:src="@drawable/ic_usr"/>
 
-                <TextView
-                    android:textSize="@dimen/text_small"
-                    android:id="@+id/usuario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_detail"
-                    android:layout_marginLeft="@dimen/margin_detail"
-                    tools:text="Usuario" />
-                    />
+                <ImageView
+                    android:id="@+id/name_img"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_name"
+                    android:paddingTop="@dimen/text_medium"/>
+
+                <EditText
+                    android:visibility="invisible"
+                    android:id="@+id/name"
+                    android:inputType="text"
+                    android:hint="Nombre"/>
 
             </TableRow>
 
             <TableRow>
+
                 <ImageView
+                    android:id="@+id/correo_img"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_mail"
+                    android:paddingTop="@dimen/text_medium"/>
+                <EditText
+                    android:id="@+id/correo"
+                    android:visibility="invisible"
+                    android:inputType="textEmailAddress"
+                    android:hint="Correo"/>
+            </TableRow>
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/cel_img"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_call"
-                    android:layout_marginRight="@dimen/small"/>
+                    android:paddingTop="@dimen/text_medium"/>
+                <EditText
+                    android:id="@+id/cel"
+                    android:visibility="invisible"
+                    android:inputType="number"
+                    android:layout_width="@dimen/login_text_width"
+                    android:hint="Celular"/>
+            </TableRow>
 
-                <TextView
-                    android:textSize="@dimen/text_small"
-                    android:id="@+id/contacto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contacto"
-                    android:layout_marginTop="@dimen/margin_detail"
-                    android:layout_marginLeft="@dimen/margin_detail"
-                    tools:text="Contacto" />
+            <TableRow>
 
+                <ImageView
+                    android:id="@+id/usuario_img"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_usr"
+                    android:paddingTop="@dimen/text_medium"/>
+                <EditText
+                    android:id="@+id/usuario"
+                    android:visibility="invisible"
+                    android:inputType="text"
+                    android:hint="Usuario"/>
+            </TableRow>
 
+            <TableRow android:layout_marginBottom="@dimen/text_medium">
+
+                <ImageView
+                    android:id="@+id/password_img"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_pass"
+                    android:paddingTop="@dimen/text_medium"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:visibility="invisible"
+                    android:inputType="textPassword"
+                    android:hint="Password"/>
 
             </TableRow>
+
+            <Button
+                android:id="@+id/updateuser"
+                android:background="@drawable/button"
+                android:layout_above="@+id/close"
+                android:text="@string/actualizar_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setOnClickListener="@{onClick}"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginBottom="@dimen/small"/>
+            <Button
+                android:id="@+id/save"
+                android:background="@drawable/button"
+                android:layout_above="@+id/close"
+                android:visibility="gone"
+                android:text="Guardar cambios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:setOnClickListener="@{onClick}"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginBottom="@dimen/small"/>
+
+            <Button
+                android:id="@+id/cancelar"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/text"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="cancelar"
+                android:visibility="gone"
+                app:setOnClickListener="@{onClick}"/>
+
+            <Button
+                android:id="@+id/close"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/text"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cerrar_sesion"
+                app:setOnClickListener="@{onClick}"/>
+
 
         </TableLayout>
 
-        <Button
-            android:background="@drawable/button"
-            android:layout_above="@+id/close"
-            android:text="@string/actualizar_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:setOnClickListener="@{onClick}"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginBottom="@dimen/small"/>
-
-        <Button
-            android:id="@+id/close"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/text"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cerrar_sesion"
-            app:setOnClickListener="@{onClick}"/>
 
     </RelativeLayout>
 

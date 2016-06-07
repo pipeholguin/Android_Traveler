@@ -5,7 +5,7 @@
     <dimen name="small">6dp</dimen>
     <dimen name="high">16dp</dimen>
     <dimen name="margin_detail">5dp</dimen>
-    <dimen name="head">140dp</dimen>
+    <dimen name="head">100dp</dimen>
     <dimen name="head_prfile">60dp</dimen>
     <dimen name="space_login">30dp</dimen>
     <dimen name="login_text_widht">150dp</dimen>
