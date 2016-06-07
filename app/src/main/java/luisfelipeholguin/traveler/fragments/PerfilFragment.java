@@ -20,11 +20,15 @@ import luisfelipeholguin.traveler.databinding.FragmentPerfilBinding;
 import luisfelipeholguin.traveler.models.Usuario;
 import luisfelipeholguin.traveler.models.Viaje;
 import luisfelipeholguin.traveler.net.api.UsuarioApi;
+import luisfelipeholguin.traveler.net.api.ViajesApi;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PerfilFragment extends Fragment implements View.OnClickListener{
+public class PerfilFragment extends Fragment implements View.OnClickListener, UsuarioApi.OnUser{
+
+
+
 
     public interface OnCloseSession{
         void onCloseSession(boolean state);
@@ -52,11 +56,22 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         final SharedPreferences preferences =  this.getActivity().getSharedPreferences("preferencias", Context.MODE_PRIVATE);
         String usuario = preferences.getString("usuario", "");
 
-         binding.nombre.setText(usuario);
+        UsuarioApi api = new UsuarioApi(getActivity());
+        api.getUsuario(this);
 
 
         binding.setOnClick(this);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onUser(String nombre, String correo, int celular) {
+
+        //binding.nombre.setText(nombre);
+        //binding.contacto.setText(celular);
+        //binding.usuario.setText(correo);
+        Log.d("NOMBRE", nombre);
+
     }
 
     @Override

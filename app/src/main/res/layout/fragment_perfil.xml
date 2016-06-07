@@ -43,11 +43,68 @@
             android:layout_alignBottom="@id/profile"
             />
 
+        <TableLayout
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+                <ImageView
+                    android:id="@+id/img_usr"
+                    android:src="@drawable/ic_usr"/>
+
+                <TextView
+                    android:textSize="@dimen/text_small"
+                    android:id="@+id/usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_detail"
+                    android:layout_marginLeft="@dimen/margin_detail"
+                    tools:text="Usuario" />
+                    />
+
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:src="@drawable/ic_call"
+                    android:layout_marginRight="@dimen/small"/>
+
+                <TextView
+                    android:textSize="@dimen/text_small"
+                    android:id="@+id/contacto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contacto"
+                    android:layout_marginTop="@dimen/margin_detail"
+                    android:layout_marginLeft="@dimen/margin_detail"
+                    tools:text="Contacto" />
+
+
+
+            </TableRow>
+
+        </TableLayout>
+
         <Button
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
+            android:background="@drawable/button"
+            android:layout_above="@+id/close"
+            android:text="@string/actualizar_usuario"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
+            app:setOnClickListener="@{onClick}"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginBottom="@dimen/small"/>
+
+        <Button
+            android:id="@+id/close"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/text"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cerrar_sesion"
             app:setOnClickListener="@{onClick}"/>
 
     </RelativeLayout>
