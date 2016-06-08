@@ -27,6 +27,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+
         api.register(binding.nombre.getText().toString(),binding.correo.getText().toString(),
                 Integer.parseInt(binding.cel.getText().toString()),binding.usuario.getText().toString(),
                 binding.password.getText().toString(),this);
