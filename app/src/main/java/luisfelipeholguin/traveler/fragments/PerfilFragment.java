@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import luisfelipeholguin.traveler.R;
 import luisfelipeholguin.traveler.databinding.FragmentPerfilBinding;
@@ -19,10 +20,19 @@ import luisfelipeholguin.traveler.net.api.UsuarioApi;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PerfilFragment extends Fragment implements View.OnClickListener, UsuarioApi.OnUser{
+public class PerfilFragment extends Fragment implements View.OnClickListener, UsuarioApi.OnUpdateUser{
 
+UsuarioApi api;
+    String user;
+    @Override
+    public void onUpdateUser(String status) {
+        if (status.equals("OK")) {
+            Toast.makeText(getActivity(), "Cambios guardados", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getActivity(), "Error al guardar cambios", Toast.LENGTH_SHORT).show();
+        }
 
-
+    }
 
     public interface OnCloseSession{
         void onCloseSession(boolean state);
@@ -51,10 +61,12 @@ public class PerfilFragment extends Fragment implements View.OnClickListener, Us
         String usuario = preferences.getString("usuario", "");
 
         Usuario userLogged = Usuario.findById(Usuario.class,1);
-        binding.nombre.setText(userLogged.getNombre());
+        user = userLogged.getNombre();
+        binding.nombre.setText(user);
         binding.close.setVisibility(View.VISIBLE);
 
-       // UsuarioApi api = new UsuarioApi(getActivity());
+        api = new UsuarioApi(getActivity());
+
        // api.getUsuario(this);
 
 
@@ -62,12 +74,6 @@ public class PerfilFragment extends Fragment implements View.OnClickListener, Us
         return binding.getRoot();
     }
 
-    @Override
-    public void onUser(String nombre, String correo, int celular) {
-
-        binding.nombre.setText(nombre);
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -90,18 +96,34 @@ public class PerfilFragment extends Fragment implements View.OnClickListener, Us
                 binding.correoImg.setVisibility(View.VISIBLE);
                 binding.cel.setVisibility(View.VISIBLE);
                 binding.celImg.setVisibility(View.VISIBLE);
-                binding.usuario.setVisibility(View.VISIBLE);
-                binding.usuarioImg.setVisibility(View.VISIBLE);
                 binding.password.setVisibility(View.VISIBLE);
                 binding.passwordImg.setVisibility(View.VISIBLE);
                 binding.close.setVisibility(View.GONE);
                 binding.updateuser.setVisibility(View.GONE);
                 binding.save.setVisibility(View.VISIBLE);
                 binding.cancelar.setVisibility(View.VISIBLE);
-
-               // Intent intent = new Intent(getActivity(), ActualizarUserActivity.class);
-               // startActivity(intent);
                 break;
+
+            case R.id.cancelar:
+                binding.name.setVisibility(View.INVISIBLE);
+                binding.nameImg.setVisibility(View.INVISIBLE);
+                binding.correo.setVisibility(View.INVISIBLE);
+                binding.correoImg.setVisibility(View.INVISIBLE);
+                binding.cel.setVisibility(View.INVISIBLE);
+                binding.celImg.setVisibility(View.INVISIBLE);
+                binding.password.setVisibility(View.INVISIBLE);
+                binding.passwordImg.setVisibility(View.INVISIBLE);
+                binding.close.setVisibility(View.VISIBLE);
+                binding.updateuser.setVisibility(View.VISIBLE);
+                binding.save.setVisibility(View.GONE);
+                binding.cancelar.setVisibility(View.GONE);
+                break;
+
+            case R.id.save:
+                api.updateUser(binding.name.getText().toString(), binding.correo.getText().toString(),
+                        Integer.parseInt(binding.cel.getText().toString()), user, binding.password.getText().toString(), this);
+                break;
+
 
 
 

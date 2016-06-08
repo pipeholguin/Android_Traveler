@@ -12,6 +12,7 @@ import java.util.List;
 import luisfelipeholguin.traveler.R;
 import luisfelipeholguin.traveler.models.Login;
 import luisfelipeholguin.traveler.models.Register;
+import luisfelipeholguin.traveler.models.Update;
 import luisfelipeholguin.traveler.models.Usuario;
 import luisfelipeholguin.traveler.models.Viaje;
 import luisfelipeholguin.traveler.net.HttpApi;
@@ -26,6 +27,7 @@ public class UsuarioApi extends HttpApi {
     static final int REQUEST_LOGIN = 0;
     static final int REQUEST_REGISTER = 1;
     static final int REQUEST_USUARIO = 2;
+    static final int REQUEST_UPDATE =3;
 
     public interface OnLogin{
         void onLogin(String status, String usuario);
@@ -38,9 +40,14 @@ public class UsuarioApi extends HttpApi {
     public interface  OnUser{
         void onUser(String nombre, String correo, int celular );
     }
+
+    public interface OnUpdateUser{
+        void onUpdateUser(String status);
+    }
     OnLogin onLogin;
     OnRegister onRegister;
     OnUser onUser;
+    OnUpdateUser onUpdateUser;
 
     public UsuarioApi(Context context) {
         super(context);
@@ -108,6 +115,29 @@ public class UsuarioApi extends HttpApi {
         }
     }
 
+    public void updateUser(String name, String email, int cel, String usr, String pass, OnUpdateUser onUpdateUser){
+        this.onUpdateUser = onUpdateUser;
+        Usuario userLogged = Usuario.findById(Usuario.class,1);
+        String url = urlBase+context.getString(R.string.url_updateUser) + userLogged.getNombre();
+        JsonObject json = new JsonObject();
+        json.addProperty("nombre", name);
+        json.addProperty("email", email);
+        json.addProperty("celular", cel);
+        json.addProperty("usuario", usr);
+        json.addProperty("contrasena", pass);
+
+        HttpAsyncTask task = makeTask(REQUEST_UPDATE, HttpAsyncTask.METHOD_PUT);
+        task.execute(url, json.toString());
+    }
+
+    private void processUpdateUser(Response response){
+
+        if (validateError(response)){
+            Update update = gson.fromJson(response.getMsg(), Update.class);
+            onUpdateUser.onUpdateUser(update.getStatus());
+        }
+    }
+
     @Override
     public void onResponse(int request, Response response) {
 
@@ -120,6 +150,9 @@ public class UsuarioApi extends HttpApi {
                 break;
             case REQUEST_USUARIO:
                 processGetUsuario(response);
+                break;
+            case REQUEST_UPDATE:
+                processUpdateUser(response);
                 break;
         }
 

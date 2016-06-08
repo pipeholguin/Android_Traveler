@@ -21,6 +21,7 @@ public class Attrs {
     public static void loadImg(ImageView img, String url) {
         Picasso.with(img.getContext()).load(Uri.parse(url)).into(img);
 
+
     }
     @BindingAdapter("app:textDate")
     public static void loadFecha(TextView txt, Date date){

@@ -95,19 +95,6 @@
                     android:hint="Celular"/>
             </TableRow>
 
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/usuario_img"
-                    android:visibility="invisible"
-                    android:src="@drawable/ic_usr"
-                    android:paddingTop="@dimen/text_medium"/>
-                <EditText
-                    android:id="@+id/usuario"
-                    android:visibility="invisible"
-                    android:inputType="text"
-                    android:hint="Usuario"/>
-            </TableRow>
 
             <TableRow android:layout_marginBottom="@dimen/text_medium">
 
