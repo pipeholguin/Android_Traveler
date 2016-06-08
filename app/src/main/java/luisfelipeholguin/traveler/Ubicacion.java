@@ -24,6 +24,7 @@ public class Ubicacion implements LocationListener {
 
     Location location;
     String cityName = null;
+    String citycorrect = null;
     TextView txt;
 
     public Ubicacion(Context context, TextView view) {
@@ -52,13 +53,32 @@ public class Ubicacion implements LocationListener {
             if (addresses.size() > 0) {
                 System.out.println(addresses.get(0).getLocality());
                 cityName = addresses.get(0).getLocality();
+                remove1(cityName);
+
                 txt.setText(cityName);
+
             }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public static String remove1(String input) {
+        // Cadena de caracteres original a sustituir.
+        String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+        // Cadena de caracteres ASCII que reemplazarán los originales.
+        String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+        String output = input;
+        for (int i=0; i<original.length(); i++) {
+            // Reemplazamos los caracteres especiales.
+            output = output.replace(original.charAt(i), ascii.charAt(i));
+
+        }//for i
+
+        return output;
+    }
+
 
     @Override
     public void onLocationChanged(Location location) {
