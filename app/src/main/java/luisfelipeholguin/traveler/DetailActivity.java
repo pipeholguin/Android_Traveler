@@ -74,9 +74,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     public void onReserva(String status) {
         Log.d("STATUS: ",""+status);
         if (status.equals("OK")){
-            Toast.makeText(this, "Reserva correcto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Favorito agregado", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Error en la reserva", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error en el favorito", Toast.LENGTH_SHORT).show();
         }
     }
 }

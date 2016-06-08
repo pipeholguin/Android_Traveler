@@ -29,4 +29,6 @@
     <string name="text_asientos">Asientos</string>
     <string name="text_cupos">Cupos</string>
     <string name="text_destino">Destino</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="actualizar_usuario">Actualizar usuario</string>
 </resources>

@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,7 +85,7 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
                 break;
 
 
-            case R.id.foto :
+            case 1:
                 Intent intentcamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intentcamera, CAMERA_REQUEST);
                 break;
@@ -107,7 +109,8 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
         switch(requestCode) {
             case SELECT_PHOTO:
                 Uri uri = data.getData();
-                binding.selected.setImageURI(uri);
+                int size = binding.selected.getWidth();
+                Picasso.with(getContext()).load(uri).resize(400, 400).into(binding.selected);
                 try {
 
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), uri);
@@ -120,27 +123,9 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
                     e.printStackTrace();
                 }
 
-               // ByteArrayOutputStream baos = new ByteArrayOutputStream();
-               // bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
-               // byte[] b = baos.toByteArray();
 
               break;
-            case  CAMERA_REQUEST:
-                Uri uri1 = data.getData();
-                Bitmap bitmap = null;
-                binding.selected.setImageURI(uri1);
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), uri1);
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                    byte[] b = outputStream.toByteArray();
-                    encodeimage = Base64.encodeToString(b, Base64.DEFAULT);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-
-                break;
 
                 }
         }
