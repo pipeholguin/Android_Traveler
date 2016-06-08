@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import luisfelipeholguin.traveler.R;
@@ -64,8 +65,8 @@ public class ViajesApi extends HttpApi {
     }
 
     public void publicar(String origen, String destino, int precio,
-                              int asientos, String fecha, String carro, String imagen,
-                              int contacto, OnPublish onPublish){
+                         int asientos, Date fecha, String carro, String imagen,
+                         int contacto, OnPublish onPublish){
         this.onPublish= onPublish;
         String url = urlBase+context.getString(R.string.url_viajes);
         JsonObject json = new JsonObject();
@@ -75,6 +76,7 @@ public class ViajesApi extends HttpApi {
         json.addProperty("asientos", asientos);
         //json.addProperty("hora", fecha.get(Calendar.HOUR_OF_DAY)+":"+fecha.get(Calendar.MINUTE));
         //json.addProperty("fecha", fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH));
+        json.addProperty("fecha",fecha.toString());
         json.addProperty("hora", "5:00");
         json.addProperty("fecha", "31-12-2016");
         json.addProperty("carro", carro);

@@ -30,6 +30,5 @@
             android:src="@drawable/ic_reload"
             android:clickable="true"
             />
-
     </FrameLayout>
 </layout>

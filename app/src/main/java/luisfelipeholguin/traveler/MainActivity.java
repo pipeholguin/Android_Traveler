@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.facebook.FacebookSdk;
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements ViajesFragment.On
 
     @Override
     public void onHomeClick(int pos) {
+        Log.d("MAIN","onHomeClick POS: "+pos);
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.POSITION_FROM_FRAGMENT,pos);
         startActivity(intent);

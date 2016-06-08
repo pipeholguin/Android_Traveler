@@ -123,13 +123,6 @@ UsuarioApi api;
                 api.updateUser(binding.name.getText().toString(), binding.correo.getText().toString(),
                         Integer.parseInt(binding.cel.getText().toString()), user, binding.password.getText().toString(), this);
                 break;
-
-
-
-
         }
-
     }
-
-
 }

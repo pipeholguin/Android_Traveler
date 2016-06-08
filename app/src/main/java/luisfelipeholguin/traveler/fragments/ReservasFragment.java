@@ -86,9 +86,12 @@ public class ReservasFragment extends Fragment implements ViajesApi.OnViajes, Vi
 
     @Override
     public void onClick(View v) {
+        Log.d("RESERVAS","SWITCH"+v.getId());
+        Log.d("RESERVAS","SWITCH"+R.id.recycler);
         switch (v.getId()){
-            case R.id.recycler:
+            case -1:
                 int pos = binding.recycler.getChildAdapterPosition(v);
+                Log.d("RESERVAS","POS: "+pos);
                 onHomeItemClick.onHomeClick(pos);
                 break;
             case  R.id.actualizar:

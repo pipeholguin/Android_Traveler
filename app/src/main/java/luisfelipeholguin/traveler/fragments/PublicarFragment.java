@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -80,11 +81,18 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
         switch (view.getId()){
             case R.id.publicar:
                 String fecha = binding.fecha.getText().toString();
+                Date date = null;
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    date = format.parse(fecha);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
                 api.publicar(binding.origen.getText().toString(),binding.destino.getText().toString(),
                         Integer.parseInt(binding.precio.getText().toString()),
                         Integer.parseInt(binding.asientos.getText().toString()),
-                        fecha,binding.carro.getText().toString(), encodeimage,
+                        date,binding.carro.getText().toString(), encodeimage,
                         Integer.parseInt(binding.contacto.getText().toString()),this);
                 break;
 
