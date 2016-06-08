@@ -27,10 +27,18 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-
-        api.register(binding.nombre.getText().toString(),binding.correo.getText().toString(),
-                Integer.parseInt(binding.cel.getText().toString()),binding.usuario.getText().toString(),
-                binding.password.getText().toString(),this);
+        if (binding.nombre.getText().toString().equals("") && binding.correo.getText().toString().equals("") &&
+                //binding.cel.getText().toString().equals("") &&
+                binding.usuario.getText().toString().equals("") &&
+                binding.password.getText().toString().equals(""))
+        {
+            Toast.makeText(this, "Campos incompletos", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            api.register(binding.nombre.getText().toString(), binding.correo.getText().toString(),
+                    Integer.parseInt(binding.cel.getText().toString()), binding.usuario.getText().toString(),
+                    binding.password.getText().toString(), this);
+        }
     }
 
     @Override
