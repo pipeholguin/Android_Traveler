@@ -89,11 +89,16 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
                     e.printStackTrace();
                 }
 
-                api.publicar(binding.origen.getText().toString(),binding.destino.getText().toString(),
-                        Integer.parseInt(binding.precio.getText().toString()),
-                        Integer.parseInt(binding.asientos.getText().toString()),
-                        date,binding.carro.getText().toString(), encodeimage,
-                        Integer.parseInt(binding.contacto.getText().toString()),this);
+                if (binding.carro.getText().toString().equals("") && binding.destino.getText().toString().equals(""))
+                {
+                    Toast.makeText(getContext(), "Campos incompletos", Toast.LENGTH_SHORT).show();
+                } else {
+                    api.publicar(binding.origen.getText().toString(),binding.destino.getText().toString(),
+                            Integer.parseInt(binding.precio.getText().toString()),
+                            Integer.parseInt(binding.asientos.getText().toString()),
+                            date,binding.carro.getText().toString(), encodeimage,
+                            Integer.parseInt(binding.contacto.getText().toString()),this);
+                }
                 break;
 
 
