@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,20 +21,26 @@ public class Ubicacion implements LocationListener {
     private Context context;
     String proveedor;
     LocationManager locationManager;
-    private boolean networkOn;
-    Location location;
-    String cityName = "No se encuentra";
 
-    public Ubicacion(Context context) {
+    Location location;
+    String cityName = null;
+    TextView txt;
+
+    public Ubicacion(Context context, TextView view) {
         this.context = context;
 
+
+        txt = view;
         locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
-        proveedor = locationManager.NETWORK_PROVIDER;
-        networkOn = locationManager.isProviderEnabled(proveedor);
-        // locationManager.requestLocationUpdates(proveedor, 1000, 1,this);
-        // location = locationManager.getLastKnownLocation(proveedor);
-        getCity();
+        proveedor = LocationManager.NETWORK_PROVIDER;
+        locationManager.requestLocationUpdates(proveedor, 1000, 1,this);
+        //location = locationManager.getLastKnownLocation(proveedor);
+        // getCity();
+
     }
+
+
+
 
 
     public void  getCity(){
@@ -45,6 +52,7 @@ public class Ubicacion implements LocationListener {
             if (addresses.size() > 0) {
                 System.out.println(addresses.get(0).getLocality());
                 cityName = addresses.get(0).getLocality();
+                txt.setText(cityName);
             }
         }
         catch (IOException e) {
@@ -54,7 +62,8 @@ public class Ubicacion implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-
+        this.location = location;
+        getCity();
     }
 
     @Override
