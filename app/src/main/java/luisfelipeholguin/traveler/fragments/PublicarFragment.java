@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -28,6 +29,7 @@ import java.util.Date;
 
 import luisfelipeholguin.traveler.LoginActivity;
 import luisfelipeholguin.traveler.R;
+import luisfelipeholguin.traveler.Ubicacion;
 import luisfelipeholguin.traveler.databinding.FragmentPublicarBinding;
 import luisfelipeholguin.traveler.net.api.ViajesApi;
 
@@ -55,7 +57,9 @@ public class PublicarFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentPublicarBinding.inflate(getLayoutInflater(savedInstanceState));
-        binding.setOnClick(this);;
+        TextView origen=  binding.origen;
+        binding.setOnClick(this);
+        Ubicacion ubicacion = new Ubicacion(getActivity(), origen);
         api = new ViajesApi(getActivity());
         return binding.getRoot();
     }
